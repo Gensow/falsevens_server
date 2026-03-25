@@ -1,8 +1,11 @@
 FROM ubuntu:22.04
 
+# 基本ライブラリ + wget + unzip をまとめてインストール
 RUN apt update && apt install -y \
     libxcursor1 libxinerama1 libxrandr2 libxi6 \
-    libgl1-mesa-glx libx11-6 libxrender1 libxext6
+    libgl1-mesa-glx libx11-6 libxrender1 libxext6 \
+    wget unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
