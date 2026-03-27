@@ -20,6 +20,5 @@ Thumbs.db
 falsevens_server/      ← 新規フォルダ
 ├── .gitignore
 ├── render.yaml
-└── godot_server/
-    ├── Dockerfile
-    └── server.pck     ← Godotでエクスポートしたもの
+├── Dockerfile
+└── server.pck     ← Godotでエクスポートしたもの
