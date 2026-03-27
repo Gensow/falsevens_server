@@ -27,4 +27,4 @@ COPY server.pck /app/server.pck
 EXPOSE 8080
 
 # ヘッドレスサーバーとして起動
-CMD ["godot", "--headless", "--main-pack", "/app/server.pck", "--main-scene", "res://ServerMain.gd"]
+CMD ["godot", "--headless", "--main-pack", "/app/server.pck", "--main-scene", "res://ServerMain.tscn"]
