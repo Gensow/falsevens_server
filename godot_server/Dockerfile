@@ -1,20 +1,30 @@
 FROM ubuntu:22.04
 
-# 必要なライブラリだけインストール
-RUN apt update && apt install -y \
-    libxcursor1 libxinerama1 libxrandr2 libxi6 \
-    libgl1-mesa-glx libx11-6 libxrender1 libxext6 \
+# 必要なパッケージをインストール
+RUN apt-get update && apt-get install -y \
+    wget \
+    unzip \
+    libfontconfig1 \
+    libgl1 \
+    libegl1 \
+    libgles2 \
     && rm -rf /var/lib/apt/lists/*
 
-# 作業ディレクトリ
+# Godot Linux ヘッドレスバイナリをダウンロード
+ARG GODOT_VERSION=4.6.1
+RUN wget -q "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" \
+    -O /tmp/godot.zip && \
+    unzip /tmp/godot.zip -d /usr/local/bin/ && \
+    mv /usr/local/bin/Godot_v${GODOT_VERSION}-stable_linux.x86_64 /usr/local/bin/godot && \
+    chmod +x /usr/local/bin/godot && \
+    rm /tmp/godot.zip
+
+# サーバー用エクスポートファイルをコピー
 WORKDIR /app
+COPY server.pck /app/server.pck
 
-# pckとGodotサーバーバイナリをコピー
-COPY server.pck .
-COPY server.x86_64 .
+# ポート8080を公開
+EXPOSE 8080
 
-# 実行権限を付与
-RUN chmod +x server.x86_64
-
-# サーバー起動
-CMD ["./server.x86_64", "--headless", "--path", ".", "res://scenes/server/ServerMain.tscn"]
+# ヘッドレスサーバーとして起動
+CMD ["godot", "--headless", "--main-pack", "/app/server.pck"]
