@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: falsevens-server
+    name: falsevens_server
     env: docker
     dockerfilePath: ./godot_server/Dockerfile
     dockerContext: ./godot_server
