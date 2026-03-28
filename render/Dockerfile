@@ -25,7 +25,7 @@ COPY server.pck /app/server.pck
 
 # Render.com環境ではHTTPプロキシ経由のためWebSocketMultiplayerPeerを使用する
 # Fly.io等の直接TCP環境では設定不要（デフォルトはTCPServer方式）
-ENV USE_WS_SERVER=1
+ENV USE_WS_SERVER=0
 
 # ポートはRender.comが環境変数PORTで動的に指定する
 EXPOSE 8080
