@@ -24,4 +24,5 @@ falsevens_server/
 ├── server.pck
 ├── Dockerfile
 └── render/
-    └ Dockerfile
+    ├ Dockerfile
+    └ nginx.conf
