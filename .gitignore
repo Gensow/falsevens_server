@@ -22,7 +22,6 @@ falsevens_server/
 ├── render.yaml
 ├── fly.toml
 ├── server.pck
-├── fly/
-│   └ Dockerfile
+├── Dockerfile
 └── render/
     └ Dockerfile
