@@ -21,7 +21,7 @@ RUN wget -q "https://github.com/godotengine/godot/releases/download/${GODOT_VERS
 
 # サーバー用エクスポートファイルをコピー
 WORKDIR /app
-COPY ./server.pck /app/server.pck
+COPY server.pck /app/server.pck
 
 # ポート8080を公開
 EXPOSE 8080
