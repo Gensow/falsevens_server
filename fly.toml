@@ -7,6 +7,7 @@ app = 'falsevens-server'
 primary_region = 'nrt'
 
 [build]
+  dockerfile = "fly/Dockerfile"
 
 [http_service]
   internal_port = 8080
