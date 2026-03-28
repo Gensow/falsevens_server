@@ -21,7 +21,7 @@ RUN wget -q "https://github.com/godotengine/godot/releases/download/${GODOT_VERS
 
 # サーバー用エクスポートファイルをコピー
 WORKDIR /app
-COPY ./server.pck /app/server.pck
+COPY server.pck /app/server.pck
 
 # Render.com環境ではHTTPプロキシ経由のためWebSocketMultiplayerPeerを使用する
 # Fly.io等の直接TCP環境では設定不要（デフォルトはTCPServer方式）
